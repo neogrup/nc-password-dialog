@@ -1,6 +1,6 @@
 {
   "name": "nc-password-dialog",
-  "version": "0.5.7",
+  "version": "0.5.8",
   "description": "Polymer component to display a password dialog",
   "authors": [
     "edgar.piera@neogrup.com"
