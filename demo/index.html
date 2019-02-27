@@ -1,77 +1,79 @@
 <!doctype html>
-<!--
-@license
-Copyright (c) 2017 Neo
--->
-<html lang="es">
-<head>
-  <title>nc-password-dialog demo</title>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
 
-  <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+    <title>nc-password-dialog demo</title>
 
-  <link rel="import" href="../../polymer/polymer-element.html">
-  <link rel="import" href="../../paper-button/paper-button.html">
+    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
 
-  <link rel="import" href="../nc-password-dialog.html">
-  <style>
-    body{
-      margin: 0px;
-      padding: 0px;
-      font-family: 'Roboto', 'Noto', sans-serif;
-    }
-    
-  </style>
-</head>
-<body unresolved>
-<dom-module id="nc-password-dialog-demo">
-  <template>
-    <style>
-     :host {
-        color: #fff;
-        --app-secondary-color: #253855;
-        display: block;
+    <script type="module">
+      import '@polymer/iron-demo-helpers/demo-pages-shared-styles';
+      import '@polymer/iron-demo-helpers/demo-snippet';
+    </script>
+
+    <script type="module" src="../nc-password-dialog.js"></script>
+
+    <custom-style>
+      <style is="custom-style" include="demo-pages-shared-styles">
+      </style>
+    </custom-style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h3>nc-password-dialog demo</h3>
+      <demo-snippet>
+        <template>
+          <demo-nc-password-dialog></demo-nc-password-dialog>
+        </template>
+      </demo-snippet>
+    </div>
+
+    <script type="module">
+      import {html, PolymerElement} from '@polymer/polymer/polymer-element.js';
+      import '@polymer/paper-button/paper-button.js';
+      import '@polymer/iron-ajax/iron-ajax.js';
+  
+      class DemoNcPasswordDialog extends PolymerElement {
+        static get template() {
+          return html`
+            <style>
+              :host {
+                color: #fff;
+                --app-secondary-color: #253855;
+                display: block;
+              }
+
+              paper-button{
+                margin: 10px 5px;
+                background-color: var(--app-secondary-color);
+                color: white;
+              }
+            </style>
+  
+            <paper-button raised on-tap="_open">Password</paper-button>      
+
+            <nc-password-dialog
+                id="passwordDialog"
+                language="es"
+                on-password-accepted="_passwordOk">
+            </nc-password-dialog>
+          `;
+        }
+  
+        _open(){
+          this.$.passwordDialog.set('userData.name', 'Edgar');
+          this.$.passwordDialog.set('userData.id', '01');
+          this.$.passwordDialog.open();
+        }
+
+        _passwordOk(){
+          console.log('password ok !')
+        }
       }
-
-      paper-button{
-        margin: 10px 5px;
-        background-color: var(--app-secondary-color);
-        color: white;
-      }
-     
-    </style>
-
-
-    <paper-button raised on-tap="_open">Password</paper-button>      
-
-    <nc-password-dialog
-      id="passwordDialog"
-      language="es"
-      on-password-accepted="_passwordOk"></nc-password-dialog>
-
-  </template>
-  <script>
-    class NcPasswordDialogDemo extends Polymer.Element {
-      static get is() {
-        return 'nc-password-dialog-demo';
-      }
-
-      _open(){
-        this.$.passwordDialog.set('userData.name', 'Edgar');
-        this.$.passwordDialog.set('userData.id', '01');
-        this.$.passwordDialog.open();
-      }
-
-      _passwordOk(){
-        console.log('password ok !')
-      }
-     
-    }
-    window.customElements.define(NcPasswordDialogDemo.is, NcPasswordDialogDemo);
-  </script>
-</dom-module>
-<nc-password-dialog-demo></nc-password-dialog-demo>
-</body>
+      window.customElements.define('demo-nc-password-dialog', DemoNcPasswordDialog);
+    </script>
+  </body>
 </html>
