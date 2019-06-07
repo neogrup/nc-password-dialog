@@ -20,7 +20,7 @@ class NcPasswordDialog extends mixinBehaviors([AppLocalizeBehavior], PolymerElem
       <style>
       </style>
       
-      <paper-dialog id="passwordDialog" class="modalNoApp" modal entry-animation="scale-up-animation">
+      <paper-dialog id="passwordDialog" class="modalNoApp" modal entry-animation="scale-up-animation" dialog>
         <iron-a11y-keys id="a11ySignIn" keys="enter" on-keys-pressed="_accept"></iron-a11y-keys>
         <div class="header">
           <iron-icon icon="communication:vpn-key"></iron-icon><h3>{{localize('PASSWORD_DIALOG_TITLE')}}</h3>
