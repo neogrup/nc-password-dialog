@@ -26,7 +26,7 @@ class NcPasswordDialog extends mixinBehaviors([AppLocalizeBehavior], PolymerElem
           <iron-icon icon="communication:vpn-key"></iron-icon><h3>{{localize('PASSWORD_DIALOG_TITLE')}}</h3>
         </div>
         <div class="content">
-          <paper-input id="password"  type="password" error-message="{{localize('INPUT_ERROR_REQUIRED')}}" value="{{formData.password}}" required></paper-input>
+          <paper-input id="password"  type="password" error-message="{{localize('INPUT_ERROR_REQUIRED')}}" value="{{formData.password}}" on-focus="_setFocus" on-blur="_setBlur" required></paper-input>
         </div>
         <div class="buttons">
           <div hidden\$="{{!loading}}">
@@ -90,6 +90,17 @@ class NcPasswordDialog extends mixinBehaviors([AppLocalizeBehavior], PolymerElem
     } else{
       this.$.password.focus();
     }
+  }
+
+  _setFocus(){
+    this.dispatchEvent(new CustomEvent('inputFocus', {bubbles: true, composed: true }));
+  }
+
+  _setBlur(){
+    this._debouncer = Debouncer.debounce(this._debouncer,
+      timeOut.after(500),
+      () => this.dispatchEvent(new CustomEvent('inputBlur', {bubbles: true, composed: true }))
+    );
   }
 }
 
