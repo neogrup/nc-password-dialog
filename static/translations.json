@@ -5,6 +5,7 @@
     "INPUT_ERROR_REQUIRED": "Required field",
     "INPUT_PASSWORD": "Password",
     "PASSWORD_DIALOG_SUBTITLE": "Type the password. User: ",
+    "PASSWORD_DIALOG_MANAGER_TITLE": "Manager password",
     "PASSWORD_DIALOG_TITLE": "Password"
   },
   "es": {
@@ -13,6 +14,7 @@
     "INPUT_ERROR_REQUIRED": "Campo obligatorio",
     "INPUT_PASSWORD": "Contraseña",
     "PASSWORD_DIALOG_SUBTITLE": "Introduzca la contraseña. Usuario: ",
+    "PASSWORD_DIALOG_MANAGER_TITLE": "Contraseña encargado",
     "PASSWORD_DIALOG_TITLE": "Contraseña"
   },
   "ca":{
@@ -21,6 +23,16 @@
     "INPUT_ERROR_REQUIRED": "Camp obligatori",
     "INPUT_PASSWORD": "Contrasenya",
     "PASSWORD_DIALOG_SUBTITLE": "Escriviu la contrasenya. Usuari: ",
+    "PASSWORD_DIALOG_MANAGER_TITLE": "Contraseya encarregat",
     "PASSWORD_DIALOG_TITLE": "Contrasenya"
+  },
+  "fr":{
+    "BUTTON_ACCEPT": "Accepter",
+    "BUTTON_CLOSE": "Fermer",
+    "INPUT_ERROR_REQUIRED": "Champ requis",
+    "INPUT_PASSWORD": "Mot de passe",
+    "PASSWORD_DIALOG_SUBTITLE": "Entrez le mot de passe. Utilisateur: ",
+    "PASSWORD_DIALOG_MANAGER_TITLE": "Mauvais mot de passe incorrect",
+    "PASSWORD_DIALOG_TITLE": "Mot de passe"
   }
 }
