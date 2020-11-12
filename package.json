@@ -10,7 +10,7 @@
     "url": "https://github.com/NEOGRUP/nc-password-dialog"
   },
   "name": "@neogrup/nc-password-dialog",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "resolutions": {
     "inherits": "2.0.3",
     "samsam": "1.1.3",

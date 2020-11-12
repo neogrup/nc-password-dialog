@@ -23,7 +23,7 @@ class NcPasswordDialog extends mixinBehaviors([AppLocalizeBehavior], PolymerElem
       <paper-dialog id="passwordDialog" class="modalNoApp" modal dialog>
         <iron-a11y-keys id="a11ySignIn" keys="enter" on-keys-pressed="_accept"></iron-a11y-keys>
         <div class="header">
-          <iron-icon icon="communication:vpn-key"></iron-icon><h3>{{localize('PASSWORD_DIALOG_TITLE')}}</h3>
+          <iron-icon icon="communication:vpn-key"></iron-icon><h3>{{localize(dialogTitle)}}</h3>
         </div>
         <div class="content">
           <paper-input id="password"  type="password" error-message="{{localize('INPUT_ERROR_REQUIRED')}}" value="{{formData.password}}" on-focus="_setFocus" on-blur="_setBlur" required></paper-input>
@@ -54,7 +54,12 @@ class NcPasswordDialog extends mixinBehaviors([AppLocalizeBehavior], PolymerElem
       loading: {
         type: Boolean,
         value: false
-      }
+      },
+      dialogTitle: {
+        type: String,
+        value: ''
+      },
+      dialogOrigin: String,
     };
   }
 
@@ -73,6 +78,10 @@ class NcPasswordDialog extends mixinBehaviors([AppLocalizeBehavior], PolymerElem
     var app = document.querySelector('body').firstElementChild.shadowRoot;
     dom(app).appendChild(this.$.passwordDialog);
     
+    if (this.dialogTitle == '') {
+      this.dialogTitle = 'PASSWORD_DIALOG_TITLE';
+    }
+
     this.formData = {};
     this.$.password.invalid = false;
     this.$.passwordDialog.open();
@@ -85,8 +94,8 @@ class NcPasswordDialog extends mixinBehaviors([AppLocalizeBehavior], PolymerElem
 
   _accept(){
     if (this.$.password.validate()) {
-      this.dispatchEvent(new CustomEvent('password-accepted', {detail: {user: this.userData, password: this.formData.password}, bubbles: true, composed: true }));
       this.$.passwordDialog.close();
+      this.dispatchEvent(new CustomEvent('password-accepted', {detail: {user: this.userData, password: this.formData.password, dialogOrigin: this.dialogOrigin}, bubbles: true, composed: true }));
     } else{
       this.$.password.focus();
     }
