@@ -2,6 +2,7 @@
   "en":{
     "BUTTON_ACCEPT": "Accept",
     "BUTTON_CLOSE": "Close",
+    "CHECKBOX_SHOW_PASSWORD": "Show password",
     "INPUT_ERROR_REQUIRED": "Required field",
     "INPUT_PASSWORD": "Password",
     "PASSWORD_DIALOG_SUBTITLE": "Type the password. User: ",
@@ -11,6 +12,7 @@
   "es": {
     "BUTTON_ACCEPT": "Aceptar",
     "BUTTON_CLOSE": "Cerrar",
+    "CHECKBOX_SHOW_PASSWORD": "Mostrar contraseña",
     "INPUT_ERROR_REQUIRED": "Campo obligatorio",
     "INPUT_PASSWORD": "Contraseña",
     "PASSWORD_DIALOG_SUBTITLE": "Introduzca la contraseña. Usuario: ",
@@ -20,6 +22,7 @@
   "ca":{
     "BUTTON_ACCEPT": "Acceptar",
     "BUTTON_CLOSE": "Tancar",
+    "CHECKBOX_SHOW_PASSWORD": "Mostrar contrasenya",
     "INPUT_ERROR_REQUIRED": "Camp obligatori",
     "INPUT_PASSWORD": "Contrasenya",
     "PASSWORD_DIALOG_SUBTITLE": "Escriviu la contrasenya. Usuari: ",
@@ -29,6 +32,7 @@
   "fr":{
     "BUTTON_ACCEPT": "Accepter",
     "BUTTON_CLOSE": "Fermer",
+    "CHECKBOX_SHOW_PASSWORD": "Montrer mot de passe",
     "INPUT_ERROR_REQUIRED": "Champ requis",
     "INPUT_PASSWORD": "Mot de passe",
     "PASSWORD_DIALOG_SUBTITLE": "Entrez le mot de passe. Utilisateur: ",
