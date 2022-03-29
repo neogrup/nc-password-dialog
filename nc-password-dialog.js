@@ -9,6 +9,7 @@ import '@polymer/iron-icons/communication-icons.js';
 import '@polymer/paper-input/paper-input.js';
 import '@polymer/iron-a11y-keys/iron-a11y-keys.js';
 import '@neogrup/nc-keyboard/nc-keyboard.js';
+import '@polymer/paper-checkbox/paper-checkbox.js';
 import { Debouncer } from '@polymer/polymer/lib/utils/debounce.js';
 import { timeOut } from '@polymer/polymer/lib/utils/async.js';
 import { dom } from '@polymer/polymer/lib/legacy/polymer.dom.js';
@@ -48,7 +49,12 @@ class NcPasswordDialog extends mixinBehaviors([AppLocalizeBehavior], PolymerElem
           <iron-icon icon="communication:vpn-key"></iron-icon><h3>{{localize(dialogTitle)}}</h3>
         </div>
         <div class="content">
-          <paper-input id="password"  type="password" error-message="{{localize('INPUT_ERROR_REQUIRED')}}" value="{{formData.password}}" on-focus="_setFocus" on-blur="_setBlur" required></paper-input>
+          <div>
+            <paper-input id="password"  type="password" error-message="{{localize('INPUT_ERROR_REQUIRED')}}" value="{{formData.password}}" on-focus="_setFocus" on-blur="_setBlur" required></paper-input>
+          </div>
+          <div style="margin-top:15px;">
+            <paper-checkbox checked="{{showPassword}}" on-change="_toggleVisibility">{{localize('CHECKBOX_SHOW_PASSWORD')}}</paper-checkbox>
+          </div>
         </div>
         <div class="content-keyboard">
           <nc-keyboard
@@ -56,7 +62,7 @@ class NcPasswordDialog extends mixinBehaviors([AppLocalizeBehavior], PolymerElem
             keyboard-embedded='S'
             keyboard-type="keyboard"
             value="{{formData.password}}"
-            >
+            keyboard-current-input="{{keyboardCurrentInput}}">
           </nc-keyboard>
         </div>
         <div class="buttons">
@@ -94,6 +100,9 @@ class NcPasswordDialog extends mixinBehaviors([AppLocalizeBehavior], PolymerElem
       showKeyboard: {
         type: String,
       },
+      keyboardCurrentInput: {
+        type: Object
+      },
     };
   }
 
@@ -118,7 +127,10 @@ class NcPasswordDialog extends mixinBehaviors([AppLocalizeBehavior], PolymerElem
 
     this.formData = {};
     this.$.password.invalid = false;
+    this.showPassword = false;
     this.$.passwordDialog.open();
+    this.keyboardCurrentInput = this.$.password;
+    this.keyboardCurrentInput.setAttribute('type', 'password');
 
     this._setFocusDebouncer = Debouncer.debounce(this._setFocusDebouncer,
       timeOut.after(500),
@@ -136,6 +148,7 @@ class NcPasswordDialog extends mixinBehaviors([AppLocalizeBehavior], PolymerElem
   }
 
   _setFocus(){
+    this.keyboardCurrentInput = this.$.password;
     this.dispatchEvent(new CustomEvent('inputFocus', {bubbles: true, composed: true }));
   }
 
@@ -144,6 +157,12 @@ class NcPasswordDialog extends mixinBehaviors([AppLocalizeBehavior], PolymerElem
       timeOut.after(500),
       () => this.dispatchEvent(new CustomEvent('inputBlur', {bubbles: true, composed: true }))
     );
+  }
+
+  _toggleVisibility(){
+    this.keyboardCurrentInput = this.$.password;
+    let fieldType = this.keyboardCurrentInput.getAttribute('type') === 'password' ? 'text' : 'password';
+    this.keyboardCurrentInput.setAttribute('type', fieldType);
   }
 }
 
