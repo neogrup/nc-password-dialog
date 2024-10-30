@@ -132,6 +132,10 @@ class NcPasswordDialog extends mixinBehaviors([AppLocalizeBehavior], PolymerElem
     this.keyboardCurrentInput = this.$.password;
     this.keyboardCurrentInput.setAttribute('type', 'password');
 
+    this._setFocusDelayed();  
+  }
+
+  _setFocusDelayed() {
     this._setFocusDebouncer = Debouncer.debounce(this._setFocusDebouncer,
       timeOut.after(500),
       () => this.$.password.focus()
@@ -143,7 +147,7 @@ class NcPasswordDialog extends mixinBehaviors([AppLocalizeBehavior], PolymerElem
       this.$.passwordDialog.close();
       this.dispatchEvent(new CustomEvent('password-accepted', {detail: {user: this.userData, password: this.formData.password, dialogOrigin: this.dialogOrigin}, bubbles: true, composed: true }));
     } else{
-      this.$.password.focus();
+      this._setFocusDelayed();
     }
   }
 
