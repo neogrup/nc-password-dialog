@@ -38,5 +38,15 @@
     "PASSWORD_DIALOG_SUBTITLE": "Entrez le mot de passe. Utilisateur: ",
     "PASSWORD_DIALOG_MANAGER_TITLE": "Mauvais mot de passe incorrect",
     "PASSWORD_DIALOG_TITLE": "Mot de passe"
+  },
+  "eu-es":{
+    "BUTTON_ACCEPT": "Onartu",
+    "BUTTON_CLOSE": "Itxi",
+    "CHECKBOX_SHOW_PASSWORD": "Erakutsi pasahitza",
+    "INPUT_ERROR_REQUIRED": "Eremu beharrezkoa",
+    "INPUT_PASSWORD": "Pasahitza",
+    "PASSWORD_DIALOG_SUBTITLE": "Idatzi pasahitza. Erabiltzailea: ",
+    "PASSWORD_DIALOG_MANAGER_TITLE": "Kudeatzailearen pasahitza",
+    "PASSWORD_DIALOG_TITLE": "Pasahitza"
   }
 }
